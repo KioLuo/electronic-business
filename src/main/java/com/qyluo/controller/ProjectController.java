@@ -1,6 +1,8 @@
 package com.qyluo.controller;
 
+import com.qyluo.meta.Person;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -9,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ProjectController {
     @RequestMapping(value="/index")
-    public String showIndex() {
+    public String showIndex(ModelMap map) {
+        Person user = null;
+        map.addAttribute("user", user);
         return "index";
     }
 }

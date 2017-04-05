@@ -23,6 +23,6 @@
         <property name="password" value="${jdbc.password}" />
     </bean>
 
-    <context:property-placeholder location="db.properties" />
+    <context:property-placeholder location="classpath:db.properties" />
 
 </beans>
