@@ -37,7 +37,7 @@
             <div class="fmitem">
                 <label class="fmlab"></label>
                 <div class="fmipt" id="urlUpload">
-                    <input class="u-ipt ipt"  name="image" placeholder="图片地址"/>
+                    <input class="u-ipt ipt"  name="icon" placeholder="图片地址"/>
                 </div>
                 <div class="fmipt" id="fileUpload"  style="display:none">
                     <input class="u-ipt ipt" name="file" type="file" id="fileUp"/>
@@ -62,7 +62,7 @@
                 </div>
             </div>
         </form>
-        <span class="imgpre"><img src="${product.image}" alt="" id="imgpre"></span>
+        <span class="imgpre"><img src="${product.icon}" alt="" id="imgpre"></span>
     </div>
     </#if>
 </div>

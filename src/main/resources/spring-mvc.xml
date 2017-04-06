@@ -9,7 +9,7 @@
 	http://www.springframework.org/schema/mvc
 	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="com.qyluo.controller" />
+    <context:component-scan base-package="com.qyluo.controller com.qyluo.service" />
     <mvc:annotation-driven />
 
     <bean id="freemarkerConfig"
