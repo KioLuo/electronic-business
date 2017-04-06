@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by qy_lu on 2017/4/4.
  */
@@ -16,9 +18,11 @@ public class ProjectController {
     private PersonService personService;
 
     @RequestMapping(value="/index")
-    public String showIndex(ModelMap map) {
-        Person user = null;
+    public String showIndex(ModelMap map, HttpServletRequest request) {
+        Person user = personService.getPersons().get(0);
         map.addAttribute("user", user);
+        request.setAttribute("type", user.getUsertype());
+
         return "index";
     }
 }

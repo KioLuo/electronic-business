@@ -2,10 +2,12 @@ package com.qyluo.dao;
 
 import com.qyluo.meta.Content;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 
 /**
  * Created by qy_lu on 2017/4/4.
  */
+@Repository
 public interface ContentDao {
     @Select("select * from content where id = #{contentId}")
     @Results({

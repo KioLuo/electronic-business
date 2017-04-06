@@ -4,17 +4,17 @@ package com.qyluo.meta;
  * Created by qy_lu on 2017/4/4.
  */
 public class Person {
-    private String userName;
+    private String username;
     private String password;
-    private String nickName;
-    private int userType;
+    private String nickname;
+    private int usertype;
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -25,19 +25,19 @@ public class Person {
         this.password = password;
     }
 
-    public String getNickName() {
-        return nickName;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
-    public int getUserType() {
-        return userType;
+    public int getUsertype() {
+        return usertype;
     }
 
-    public void setUserType(int userType) {
-        this.userType = userType;
+    public void setUsertype(int usertype) {
+        this.usertype = usertype;
     }
 }
