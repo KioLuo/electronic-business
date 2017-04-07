@@ -17,7 +17,7 @@ public class ProjectController {
     @Autowired
     private PersonService personService;
 
-    @RequestMapping(value="/index")
+    @RequestMapping(value="/index.do")
     public String showIndex(ModelMap map, HttpServletRequest request) {
         Person user = personService.getPersons().get(0);
         map.addAttribute("user", user);
