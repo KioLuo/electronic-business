@@ -9,6 +9,16 @@ public class Person {
     private String nickname;
     private int usertype;
 
+    public Person() {
+    }
+
+    public Person(String username, String password, String nickname, int usertype) {
+        this.username = username;
+        this.password = password;
+        this.nickname = nickname;
+        this.usertype = usertype;
+    }
+
     public String getUsername() {
         return username;
     }

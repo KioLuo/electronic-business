@@ -3,7 +3,7 @@
 	if(!loginForm){
 		return;
 	}
-	var userName = loginForm['userName'];
+	var userName = loginForm['username'];
 	var password = loginForm['password'];
 	var isSubmiting = false;
 	var loading = new Loading();

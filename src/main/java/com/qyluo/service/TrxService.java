@@ -12,10 +12,5 @@ import java.util.List;
  */
 @Service
 public class TrxService {
-    @Autowired
-    private TrxDao trxDao;
 
-    public List<Trx> getTrxs() {
-        return trxDao.getTrxs();
-    }
 }

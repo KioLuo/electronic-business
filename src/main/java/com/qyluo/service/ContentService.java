@@ -12,10 +12,6 @@ import java.util.List;
  */
 @Service
 public class ContentService {
-    @Autowired
-    private ContentDao contentDao;
 
-    public Content getContent(int contentId) {
-        return contentDao.getContent(contentId);
-    }
+
 }

@@ -7,7 +7,7 @@ public class Content {
     private int id;
     private int price;
     private String title;
-    private byte[] icon;
+    private String icon;
     private String abstra;
     private String text;
 
@@ -35,11 +35,11 @@ public class Content {
         this.title = title;
     }
 
-    public byte[] getIcon() {
+    public String getIcon() {
         return icon;
     }
 
-    public void setIcon(byte[] icon) {
+    public void setIcon(String icon) {
         this.icon = icon;
     }
 
