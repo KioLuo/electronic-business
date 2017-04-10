@@ -34,4 +34,12 @@ public class ProductService {
         }
         return productList;
     }
+
+    /**
+     * delete the product of specific id
+     * @param id the id of the product to be removed
+     */
+    public void removeProduct(int id) {
+        productDao.removeProduct(id);
+    }
 }

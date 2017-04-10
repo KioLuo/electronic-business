@@ -3,6 +3,7 @@ package com.qyluo.controller;
 import com.qyluo.meta.ApiResult;
 import com.qyluo.meta.Person;
 import com.qyluo.service.PersonService;
+import com.qyluo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,9 @@ import java.util.List;
 public class ApiController {
     @Autowired
     PersonService personService;
+
+    @Autowired
+    ProductService productService;
 
     @RequestMapping(value = "/api/login", method = RequestMethod.POST)
     @ResponseBody
@@ -54,4 +58,13 @@ public class ApiController {
 
         return apiResult;
     }
+
+    @RequestMapping(value = "/api/delete", method = RequestMethod.POST)
+    @ResponseBody
+    public ApiResult deleteProduct(@RequestParam("id") int id) {
+        productService.removeProduct(id);
+        ApiResult apiResult = new ApiResult(200, "success", true);
+        return apiResult;
+    }
+
 }
