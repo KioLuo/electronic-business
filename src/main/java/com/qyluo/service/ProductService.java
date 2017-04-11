@@ -42,4 +42,57 @@ public class ProductService {
     public void removeProduct(int id) {
         productDao.removeProduct(id);
     }
+
+    /**
+     * get the information of the product to show
+     * @param id the product id
+     * @return the product to show
+     */
+    public Product showProduct(int id) {
+        Product product = productDao.getProduct(id);
+        if (product.getBuyTime() > 0) {
+            product.setIsBuy(true);
+            product.setIsSell(true);
+        } else {
+            product.setIsSell(false);
+            product.setIsBuy(false);
+        }
+
+        return product;
+    }
+
+    /**
+     * add transaction information
+     */
+    public void addTransaction(int contentId, int price, long time) {
+        productDao.addTransaction(contentId, price, time);
+    }
+
+    /**
+     * get the transaction list in table trx
+     */
+    public List<Product> getBuyList() {
+        return productDao.getBuyList();
+    }
+
+    /**
+     * add product in table content and get the added product information
+     */
+    public Product addProduct(int price, String title, String image, String summary, String detail) {
+        Product product = new Product();
+        product.setPrice(price);
+        product.setTitle(title);
+        product.setIcon(image);
+        product.setSummary(summary);
+        product.setDetail(detail);
+        productDao.addProduct(product);
+        return product;
+    }
+
+    /**
+     * update product in table content and get the updated product information
+     */
+    public Product updateProduct(int price, String title, String image, String summary, String detail, int id) {
+        return productDao.updateProduct(price, title, image, summary, detail, id);
+    }
 }

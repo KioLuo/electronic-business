@@ -14,7 +14,6 @@
 	var loading = new Loading();
 	var imageUrl;
 	var imageMode = "urlUpload";
-	
 
 
 	var page = {
@@ -25,7 +24,7 @@
 			
 			$('uploadType').onclick = function(e){
 				e = window.event || e;
-				o = e.srcElement || e.target;
+				var o = e.srcElement || e.target;
 				if(o.nodeName==="INPUT"){
 					var s,h;
 					o.value==='url'?(s='urlUpload',h='fileUpload'):(s='fileUpload',h='urlUpload');
@@ -52,7 +51,7 @@
 						alert("超过文件上传大小限制");
 					}else{
 		            var form = new FormData();
-		            form.append('file', file, file.name);
+		            form.append('file', file);
 		            form.enctype = "multipart/form-data";
 
 		            var xhr = new XMLHttpRequest();
@@ -113,5 +112,5 @@
 			return result;
 		}
 	};
-	page.init();
+    page.init();
 })(window,document);

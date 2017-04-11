@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +29,7 @@ public class ProjectController {
     private ProductService productService;
 
     /**
-     *mapping index page
+     * show index page
      */
     @RequestMapping(value="/")
     public String showIndex(ModelMap map, HttpSession session, HttpServletRequest request) {
@@ -51,7 +53,7 @@ public class ProjectController {
     }
 
     /**
-     * mapping login page
+     * show login page
      */
     @RequestMapping("/login")
     public String showLogin(HttpServletRequest request, ModelMap map) {
@@ -62,7 +64,7 @@ public class ProjectController {
     }
 
     /**
-     * logout and return login page
+     * logout and jump to login page
      */
     @RequestMapping("/logout")
     public String logout(HttpSession session, ModelMap map) {
@@ -70,6 +72,101 @@ public class ProjectController {
         Person user = null;
         map.addAttribute("user", user);
         return "login";
+    }
+
+    /**
+     * show the show page
+     */
+    @RequestMapping("/show")
+    public String showProduct(@RequestParam("id") int id, HttpSession session, ModelMap map) {
+        Person user = checkUser(session);
+        map.addAttribute("user", user);
+
+        Product product = productService.showProduct(id);
+        map.addAttribute("product", product);
+
+        return "show";
+    }
+
+    /**
+     * show the settle account page
+     */
+    @RequestMapping("/settleAccount")
+    public String settleAccount(HttpSession session, ModelMap map) {
+        Person user = checkUser(session);
+        map.addAttribute("user", user);
+        return "settleAccount";
+    }
+
+    /**
+     * show the account page
+     */
+    @RequestMapping("/account")
+    public String showAccount(HttpSession session, ModelMap map) {
+        Person user = checkUser(session);
+        map.addAttribute("user", user);
+
+        List<Product> buyList = productService.getBuyList();
+        map.addAttribute("buyList", buyList);
+
+        return "account";
+    }
+
+    /**
+     * show the public page
+     */
+    @RequestMapping("/public")
+    public String showPublic(HttpSession session, ModelMap map) {
+        Person user = checkUser(session);
+        map.addAttribute("user", user);
+
+        return "public";
+    }
+
+    /**
+     * show the public submit page
+     */
+    @RequestMapping(value = "/publicSubmit", method = RequestMethod.POST)
+    public String showPublicSubmit(@RequestParam("title") String title, @RequestParam("image") String image,
+                                   @RequestParam("detail") String detail, @RequestParam("summary") String summary,
+                                   @RequestParam("price") int price, HttpSession session, ModelMap map) {
+        Person user = checkUser(session);
+        map.addAttribute("user", user);
+
+        Product product = productService.addProduct(price, title, image, summary, detail);
+        map.addAttribute("product", product);
+
+        return "publicSubmit";
+    }
+
+    /**
+     * show the edit page
+     */
+    @RequestMapping("/edit")
+    public String showEdit(@RequestParam("id") int id, HttpSession session, ModelMap map) {
+        Person user = checkUser(session);
+        map.addAttribute("user", user);
+
+        Product product = productService.showProduct(id);
+        map.addAttribute("product", product);
+
+        return "edit";
+    }
+
+    /**
+     * show the public submit page
+     */
+    @RequestMapping(value = "/editSubmit", method = {RequestMethod.POST, RequestMethod.GET})
+    public String showEditSubmit(@RequestParam("title") String title, @RequestParam("image") String image,
+                                   @RequestParam("detail") String detail, @RequestParam("summary") String summary,
+                                   @RequestParam("price") int price, @RequestParam("id") int id, HttpSession session, ModelMap map) {
+        Person user = checkUser(session);
+        map.addAttribute("user", user);
+
+        Product product = productService.updateProduct(price, title, image, summary, detail, id);
+        map.addAttribute("product", product);
+
+        return "editSubmit";
     }
 
     /**
