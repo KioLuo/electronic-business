@@ -78,7 +78,7 @@ public class ApiController {
 
     @RequestMapping(value = "/api/buy", method = RequestMethod.POST)
     @ResponseBody
-    public ApiResult buyProducts(@RequestParam("data") Object id, @RequestParam("number") Object number) {
+    public ApiResult buyProducts(@RequestBody String str) {
 //        for (int i = 0; i < id.size(); i++) {
 //            int price = productService.showProduct(id.get(i)).getPrice();
 //            long time = new Date().getTime();
@@ -87,6 +87,7 @@ public class ApiController {
 //            }
 //        }
 
+        System.out.println(str);
         return new ApiResult(200, "success", true);
     }
 
