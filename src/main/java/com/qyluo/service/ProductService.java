@@ -93,6 +93,14 @@ public class ProductService {
      * update product in table content and get the updated product information
      */
     public Product updateProduct(int price, String title, String image, String summary, String detail, int id) {
-        return productDao.updateProduct(price, title, image, summary, detail, id);
+        Product product = new Product();
+        product.setPrice(price);
+        product.setTitle(title);
+        product.setIcon(image);
+        product.setSummary(summary);
+        product.setDetail(detail);
+        product.setId(id);
+        productDao.updateProduct(product);
+        return product;
     }
 }

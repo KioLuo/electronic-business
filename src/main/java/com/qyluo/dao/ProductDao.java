@@ -32,11 +32,11 @@ public interface ProductDao {
     void addProduct(@Param("product") Product product);
 
     //update product information in table content
-    @Update("update content set price = #{price}, title = #{title}, icon = #{image}, abstract = #{summary}, text = #{detail} where id = #{id}")
-    Product updateProduct(@Param("price") int price, @Param("title") String title, @Param("image") String image,@Param("summary") String summary, @Param("detail") String detail, @Param("id") int id);
+    @Update("update content set price = #{product.price}, title = #{product.title}, icon = #{product.icon}, abstract = #{product.summary}, text = #{product.detail} where id = #{product.id}")
+    void updateProduct(@Param("product") Product product);
 
     //add transaction in table trx
-    @Update("insert into trx (contentId, PersonId, price, time) values (#{contentId}, 0, #{price}, #{time}")
+    @Insert("insert into trx (contentId, PersonId, price, time) values (#{contentId}, 0, #{price}, #{time})")
     void addTransaction(@Param("contentId") int contentId, @Param("price") int price, @Param("time") long time);
 
     //get the transaction list in table trx

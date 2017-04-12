@@ -1,9 +1,6 @@
 package com.qyluo.controller;
 
-import com.qyluo.meta.ApiResult;
-import com.qyluo.meta.ApiStringResult;
-import com.qyluo.meta.Person;
-import com.qyluo.meta.Product;
+import com.qyluo.meta.*;
 import com.qyluo.service.PersonService;
 import com.qyluo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +17,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by qy_lu on 2017/4/9.
@@ -78,16 +72,15 @@ public class ApiController {
 
     @RequestMapping(value = "/api/buy", method = RequestMethod.POST)
     @ResponseBody
-    public ApiResult buyProducts(@RequestBody String str) {
-//        for (int i = 0; i < id.size(); i++) {
-//            int price = productService.showProduct(id.get(i)).getPrice();
-//            long time = new Date().getTime();
-//            for (int j = 0; j < number.get(i); j++) {
-//                productService.addTransaction(id.get(i), price, time);
-//            }
-//        }
+    public ApiResult buyProducts(@RequestBody List<BuyList> buyList) {
+        for (int i = 0; i < buyList.size(); i++) {
+            int price = productService.showProduct(buyList.get(i).getId()).getPrice();
+            long time = new Date().getTime();
+            for (int j = 0; j < buyList.get(i).getNumber(); j++) {
+                productService.addTransaction(buyList.get(i).getId(), price, time);
+            }
+        }
 
-        System.out.println(str);
         return new ApiResult(200, "success", true);
     }
 
