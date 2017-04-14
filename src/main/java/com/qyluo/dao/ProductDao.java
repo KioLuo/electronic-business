@@ -36,7 +36,7 @@ public interface ProductDao {
     void updateProduct(@Param("product") Product product);
 
     //add transaction in table trx
-    @Insert("insert into trx (contentId, PersonId, price, time) values (#{contentId}, 0, #{price}, #{time})")
+    @Insert("insert into trx (contentId, personId, price, time) values (#{contentId}, 0, #{price}, #{time})")
     void addTransaction(@Param("contentId") int contentId, @Param("price") int price, @Param("time") long time);
 
     //get the transaction list in table trx
