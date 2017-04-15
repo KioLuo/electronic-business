@@ -110,7 +110,7 @@
         <configuration>
           <path>/</path>
           <url>http://localhost:8080/manager/text</url>
-          <server>tomcat7</server>
+          <server>Tomcat7</server>
         </configuration>
       </plugin>
     </plugins>

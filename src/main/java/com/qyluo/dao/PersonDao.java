@@ -19,5 +19,5 @@ public interface PersonDao {
             @Result(property = "nickname", column = "nickName"),
             @Result(property = "usertype", column = "userType")
     })
-    public List<Person> getPersons();
+    List<Person> getPersons();
 }
