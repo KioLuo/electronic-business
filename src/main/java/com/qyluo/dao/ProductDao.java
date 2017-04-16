@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface ProductDao {
     //generate the productList in the index page
-    @Select("select a.id as id, any_value(a.title) as title, any_value(a.price) as price, any_value(a.icon) as icon, any_value(a.abstract) as summary," +
-            "any_value(a.text) as detail, any_value(b.time) as buyTime from content a left join trx b on a.id = b.contentId group by a.id")
+    @Select("select a.id as id, a.title as title, a.price as price, a.icon as icon, a.abstract as summary," +
+            "a.text as detail, b.time as buyTime from content a left join trx b on a.id = b.contentId group by a.id")
     List<Product> getProductList();
 
     //delete the product of specific id in table content
@@ -21,8 +21,8 @@ public interface ProductDao {
     void removeProduct(@Param("id") int id);
 
     //show the product information of specific id
-    @Select("select a.id as id, any_value(a.title) as title, any_value(a.price) as price, any_value(a.icon) as icon, any_value(a.abstract) as summary, " +
-            "any_value(a.text) as detail, count(*) as buyNum, any_value(b.time) as buyTime, any_value(b.price) as buyPrice from content a left join " +
+    @Select("select a.id as id, a.title as title, a.price as price, a.icon as icon, a.abstract as summary, " +
+            "a.text as detail, count(*) as buyNum, b.time as buyTime, b.price as buyPrice from content a left join " +
             "trx b on a.id = b.contentId where a.id = #{id} group by a.id")
     Product getProduct(@Param("id") int id);
 
@@ -40,8 +40,8 @@ public interface ProductDao {
     void addTransaction(@Param("contentId") int contentId, @Param("price") int price, @Param("time") long time);
 
     //get the transaction list in table trx
-    @Select("select b.contentId as id, any_value(a.title) as title, any_value(a.price) as price, any_value(a.icon) as icon, any_value(a.abstract) as summary, " +
-            "any_value(a.text) as detail, count(*) as buyNum, any_value(b.time) as buyTime, any_value(b.price) as buyPrice from content a right join " +
+    @Select("select b.contentId as id, a.title as title, a.price as price, a.icon as icon, a.abstract as summary, " +
+            "a.text as detail, count(*) as buyNum, b.time as buyTime, b.price as buyPrice from content a right join " +
             "trx b on a.id = b.contentId group by b.contentId")
     List<Product> getBuyList();
 
