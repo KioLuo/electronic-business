@@ -15,7 +15,7 @@ price bigint  comment "当前价格",
 title varchar(100) comment "标题",
 icon blob comment "图片",
 abstract varchar(200) comment "摘要",
-text blob comment "正文"  )
+text mediumtext comment "正文"  )
 ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 交易记录表
